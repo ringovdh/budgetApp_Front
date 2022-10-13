@@ -1,0 +1,27 @@
+.customTable thead tr th{
+  color: #f5f7f8;
+  background: #303e45;
+  font-size: 17px;
+  font-weight: 700;
+  padding: 12px;
+  border-bottom: none;
+}
+
+.customTable tbody tr td{
+  color: #555;
+  background: #f5f7f8;
+  font-size: 15px;
+  font-weight: 500;
+  padding: 13px;
+  vertical-align: middle;
+}
+.customTable tbody tr:nth-child(odd) td {
+  background: #86959d;
+}
+
+.customTable ul > li {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: inline;
+}

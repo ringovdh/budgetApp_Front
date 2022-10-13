@@ -1,0 +1,49 @@
+<div class="card my-5">
+  <div class="card-body">
+    <div class="customPanel">
+      <div class="panel-heading">
+        <div class="row">
+          <div class="col-8">
+            <div class="card-title text-center">
+              <h3>Overzicht commentaren</h3>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class ="card-button">
+              <a (click)="createComment()" class="btn"><i class="fa fa-plus-circle"></i> Voeg nieuwe commentaar toe</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel-body table-responsive">
+        <table class="customTable table-bordered table-striped">
+          <thead class="thead-dark">
+            <tr>
+              <th>#</th>
+              <th>Zoekterm</th>
+              <th>Commentaar</th>
+              <th>Categorie</th>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let comment of comments">
+              <td>{{ comment.id }}</td>
+              <td>{{ comment.searchterm }}</td>
+              <td>{{ comment.replacement }}</td>
+              <td></td>
+              <td>
+                <a (click)="editComment(comment)"><i class="fa fa-pencil"></i></a>
+              </td>
+              <td>
+                <a (click)="deleteComment(comment.id)"><i class="fa fa-trash"></i></a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
