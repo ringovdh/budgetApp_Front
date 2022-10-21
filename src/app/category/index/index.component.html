@@ -1,0 +1,59 @@
+<div class="card my-5">
+  <div class="card-body">
+    <div class="customPanel">
+      <div class="panel-heading">
+        <div class="row">
+          <div class="col-8">
+            <div class="card-title text-center">
+              <h3>Overzicht categorieën</h3>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class ="card-button">
+              <a (click)="createCategory()" class="btn"><i class="fa fa-plus-circle"></i> Voeg nieuwe categorie toe</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel-body table-responsive">
+        <table class="customTable table-bordered table-striped">
+          <thead class="thead-dark">
+            <tr>
+              <th>#</th>
+              <th>Label</th>
+              <th>Vaste Kost</th>
+              <th>Opnemen in details</th>
+              <th>Opnemen in monitoring</th>
+              <th>Limietbedrag</th>
+              <th><i class="fa fa-pencil"></i></th>
+              <th><i class="fa fa-trash"></i></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let cat of categories">
+              <td><i class="fa {{cat.icon}}" ></i></td>
+              <td>{{ cat.label }}</td>
+              <td>
+                <i [ngClass]="{'fa fa-check':cat.fixedcost === true}"></i>
+              </td>
+              <td>
+                <i [ngClass]="{'fa fa-check':cat.indetails === true}"></i>
+              </td>
+              <td>
+                <i [ngClass]="{'fa fa-check':cat.inmonitor === true}"></i>
+              </td>
+              <td>{{ cat.limitamount }}€</td>
+              <td>
+                <a (click)="editCategory(cat)"><i class="fa fa-pencil"></i></a>
+              </td>
+              <td>
+                <a (click)="deleteCategory(cat.id)"><i class="fa fa-trash"></i></a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

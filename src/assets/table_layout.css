@@ -1,3 +1,7 @@
+.customTable {
+  width: 100%;
+}
+
 .customTable thead tr th{
   color: #f5f7f8;
   background: #303e45;

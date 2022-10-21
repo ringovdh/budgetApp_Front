@@ -13,7 +13,6 @@
         formControlName="searchterm"
         id="searchterm"
         type="text"
-        [(ngModel)]="comment.searchterm"
         class="form-control">
       <div *ngIf="f['searchterm'].touched && f['searchterm'].invalid" class="alert alert-danger">
         <div *ngIf="f['searchterm'].errors && f['searchterm'].errors['required']">Zoekterm is verplicht.</div>
@@ -26,10 +25,27 @@
         formControlName="replacement"
         id="replacement"
         type="text"
-        [(ngModel)]="comment.replacement"
         class="form-control">
       <div *ngIf="f['replacement'].touched && f['replacement'].invalid" class="alert alert-danger">
         <div *ngIf="f['replacement'].errors && f['replacement'].errors['required']">Commentaar is verplicht.</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="category" class="form-label">Categorie</label>
+      <select
+        formControlName="category"
+        id="category"
+        class="form-select">
+        <option value="0">-</option>
+        <option *ngFor="let cat of categories"
+                [ngValue]="cat">{{ cat.label }}</option>
+      </select>
+      <div *ngIf="f['category'].touched && f['category'].invalid" class="alert alert-danger">
+        <div *ngIf="f['category'].errors && f['category'].errors['required']">Categorie is verplicht.</div>
+      </div>
+      <div class="d-flex mt-5">
+        {{ comment.category.label }}
       </div>
     </div>
   </div>

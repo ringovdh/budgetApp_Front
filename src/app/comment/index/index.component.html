@@ -24,8 +24,8 @@
               <th>Zoekterm</th>
               <th>Commentaar</th>
               <th>Categorie</th>
-              <th></th>
-              <th></th>
+              <th><i class="fa fa-pencil"></i></th>
+              <th><i class="fa fa-trash"></i></th>
             </tr>
           </thead>
           <tbody>
@@ -33,7 +33,7 @@
               <td>{{ comment.id }}</td>
               <td>{{ comment.searchterm }}</td>
               <td>{{ comment.replacement }}</td>
-              <td></td>
+              <td>{{ comment.category.label }}</td>
               <td>
                 <a (click)="editComment(comment)"><i class="fa fa-pencil"></i></a>
               </td>

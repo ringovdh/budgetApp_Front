@@ -1,4 +1,4 @@
-<form [formGroup]="form" (ngSubmit)="submit()">
+<form [formGroup]="createCommentForm" (ngSubmit)="submit()">
 
   <div class="modal-header">
     <div class="modal-header-left">
@@ -26,15 +26,28 @@
         id="body"
         type="text"
         class="form-control">
-                </textarea>
+      </textarea>
       <div *ngIf="f['replacement'].touched && f['replacement'].invalid" class="alert alert-danger">
         <div *ngIf="f['replacement'].errors && f['replacement'].errors['required']">Commentaar is verplicht.</div>
       </div>
     </div>
-  </div>
 
+    <div class="form-group">
+      <label for="category" class="form-label">Categorie</label>
+      <select
+        formControlName="category"
+        id="category"
+        class="form-select">
+        <option value="0">-</option>
+        <option *ngFor="let cat of categories" [ngValue]="cat.id">{{ cat.label }}</option>
+      </select>
+      <div *ngIf="f['category'].touched && f['category'].invalid" class="alert alert-danger">
+        <div *ngIf="f['category'].errors && f['category'].errors['required']">Categorie is verplicht.</div>
+      </div>
+    </div>
+  </div>
   <div class="modal-budget-footer">
-    <button class="btn btn-sm btn-primary" type="submit" [disabled]="!form.valid">
+    <button class="btn btn-sm btn-primary" type="submit" [disabled]="!createCommentForm.valid">
       <i class="fa fa-plus-circle"></i> Bewaar commentaar
     </button>
     <button class="btn btn-sm btn-primary" type="button" (click)="close()">

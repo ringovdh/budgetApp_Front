@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { RouterLinkWithHref, RouterOutlet } from "@angular/router";
 import { HttpClientModule } from "@angular/common/http";
 import { CommentModule } from "./comment/comment.module";
+import { CategoryModule } from "./category/category.module";
 import { NgbModule, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
@@ -15,6 +16,7 @@ import { NgbModule, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
     BrowserModule,
     RouterOutlet,
     CommentModule,
+    CategoryModule,
     HttpClientModule,
     RouterLinkWithHref,
     NgbModule

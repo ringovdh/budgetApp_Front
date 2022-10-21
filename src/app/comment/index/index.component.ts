@@ -1,4 +1,4 @@
-import {Component, createComponent, OnInit, TemplateRef} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { CommentService } from "../comment.service";
 import { Comment } from "../comment";
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -21,11 +21,11 @@ export class IndexComponent implements OnInit {
               private modalService: NgbModal) { }
 
   ngOnInit(): void {
-    this.loadComments()
+    this.loadComments();
   }
 
   deleteComment(id:number) {
-    this.commentService.delete(id).subscribe(res => {
+    this.commentService.delete(id).subscribe(() => {
       this.comments = this.comments.filter(item => item.id !== id);
       console.log('Comment deleted successfully!');
     })
@@ -34,13 +34,17 @@ export class IndexComponent implements OnInit {
   editComment(comment:Comment) {
     const modalRef = this.modalService.open(EditComponent);
     modalRef.componentInstance.comment = comment;
+    modalRef.result.then((result) => {
+      if (result) {
+        this.loadComments();
+      }
+    });
   }
 
   createComment() {
     const modalRef = this.modalService.open(CreateComponent);
     modalRef.result.then((result) => {
       if (result) {
-        console.log(result)
         this.loadComments();
       }
     });
@@ -49,7 +53,6 @@ export class IndexComponent implements OnInit {
   loadComments() {
     this.commentService.getAll().subscribe((data: Comment[]) => {
       this.comments = data;
-      console.log(this.comments);
     });
   }
 }
