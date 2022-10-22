@@ -16,11 +16,18 @@ import {CreateComponent} from "../create/create.component";
 export class IndexComponent implements OnInit {
 
   categories: Category[] = [];
+  p: number = 1;
+  totalCategories: number = 0;
 
   constructor(public categoryService: CategoryService,
               private modalService: NgbModal) { }
 
   ngOnInit(): void {
+    this.loadCategories();
+  }
+
+  pageChangeEvent(event: number){
+    this.p = event;
     this.loadCategories();
   }
 
@@ -53,6 +60,7 @@ export class IndexComponent implements OnInit {
   loadCategories() {
     this.categoryService.getAll().subscribe((data: Category[]) => {
       this.categories = data;
+      this.totalCategories = this.categories.length;
     });
   }
 

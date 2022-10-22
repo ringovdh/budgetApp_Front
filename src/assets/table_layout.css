@@ -29,3 +29,26 @@
   padding: 0;
   display: inline;
 }
+
+#pagination {
+  color: #f5f7f8;
+  background: #7d97a5;
+  font-size: 17px;
+  line-height: 33px;
+  padding: 25px 15px;
+  border-radius: 0 0 8px 8px;
+}
+
+.pagination /deep/ .ngx-pagination .current {
+  padding: 0.1875rem 0.625rem;
+  background: #7d97a5;
+  color: #555 !important;
+  cursor: default;
+}
+
+.pagination /deep/ .ngx-pagination a:hover {
+  padding: 0.1875rem 0.625rem;
+  background: #7d97a5;
+  color: #555 !important;
+  cursor: default;
+}

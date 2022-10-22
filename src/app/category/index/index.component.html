@@ -31,7 +31,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let cat of categories">
+            <tr *ngFor="let cat of categories| paginate: { itemsPerPage: 10, currentPage: p }">
               <td><i class="fa {{cat.icon}}" ></i></td>
               <td>{{ cat.label }}</td>
               <td>
@@ -53,6 +53,18 @@
             </tr>
           </tbody>
         </table>
+        <div class="row" id="pagination">
+          <div class="col-sm-6">
+            toon <b>10</b> van de <b>{{ totalCategories }}</b> items
+          </div>
+          <div class="col-sm-6">
+            <pagination-controls class="pagination"
+                                 (pageChange)="pageChangeEvent($event)"
+                                 previousLabel=""
+                                 nextLabel="">
+            </pagination-controls>
+          </div>
+        </div>
       </div>
     </div>
   </div>

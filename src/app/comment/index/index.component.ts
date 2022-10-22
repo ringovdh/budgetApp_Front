@@ -16,11 +16,18 @@ import {EditComponent} from "../edit/edit.component";
 export class IndexComponent implements OnInit {
 
   comments: Comment[] = [];
+  p: number = 1;
+  totalComments: number = 0;
 
   constructor(public commentService: CommentService,
               private modalService: NgbModal) { }
 
   ngOnInit(): void {
+    this.loadComments();
+  }
+
+  pageChangeEvent(event: number){
+    this.p = event;
     this.loadComments();
   }
 
@@ -53,6 +60,7 @@ export class IndexComponent implements OnInit {
   loadComments() {
     this.commentService.getAll().subscribe((data: Comment[]) => {
       this.comments = data;
+      this.totalComments = this.comments.length;
     });
   }
 }
