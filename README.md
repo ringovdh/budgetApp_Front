@@ -1,2 +1,2 @@
 # budgetApp_Front
-Angular frontend of BudgetApp
+Angular 14 frontend of BudgetApp
